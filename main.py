@@ -70,7 +70,7 @@ class MainPage(webapp2.RequestHandler):
         params = parse_params(self.request)
         template = JINJA_ENVIRONMENT.get_template('index.html')
 
-        image_url = '/draw_simulation?{}'.format(urllib.urlencode(params))
+        image_url = '/zombies/draw_simulation?{}'.format(urllib.urlencode(params))
         params['image_url'] = image_url
         self.response.write(template.render(params))
 
@@ -95,6 +95,6 @@ class SimulationImage(webapp2.RequestHandler):
 
 
 APPLICATION = webapp2.WSGIApplication([
-    ('/', MainPage),
-    ('/draw_simulation.*', SimulationImage),
+    ('/zombies', MainPage),
+    ('/zombies/draw_simulation.*', SimulationImage),
 ], debug=True)

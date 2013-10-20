@@ -1,0 +1,21 @@
+application: your-app-id
+version: one
+module: zombies
+runtime: python27
+api_version: 1
+threadsafe: true
+vm: true
+
+manual_scaling:
+  instances: 1
+
+vm_settings:
+  machine_type: n1-standard-1  # Default
+  apt_get_install: python-numpy python-scipy python-matplotlib
+
+handlers:
+
+# Main app.  All the real work is here.
+# - url: /zombies.*
+- url: .*
+  script: main.APPLICATION
